@@ -1,0 +1,103 @@
+<select>
+    <option>SpeedGrader</option>
+</select>
+<hr>
+
+<label for="assignmentName">
+    <h3>Assignment Name</h3>
+</label>
+<p>
+    <input id="assignmentName" type="text" value="A1 - ENV + HTML">
+</p>
+<p>
+<textarea cols="50" rows="10">
+This assignment describes how to install the development environment for creating and working with Web applications we will be developing this semester. We will add new content every week, pushing the code to a GitHub source repository, and then deploying the content to a remote server hosted on Netlify.
+</textarea>
+</p>
+
+<table border="0">
+    <tr>
+        <td align="right">Points</td>
+        <td align="left"><input type="text" value="100"></td>
+    </tr>
+    <tr>
+        <td align="right">Assignment Group</td>
+        <td align="left">
+            <select>
+                <option>ASSIGNMENTS</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">Display Grade as</td>
+        <td align="left">
+            <select>
+                <option>Percentage</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Submission Type</td>
+        <td align="left">
+            <select>
+                <option>Online</option>
+            </select><br>
+            <b>Online Entry Options</b><br>
+            <input type="checkbox" checked> Text Entry <br>
+            <input type="checkbox"> Website URL <br>
+            <input type="checkbox"> Media Recordings <br>
+            <input type="checkbox"> Student Annotation <br>
+            <input type="checkbox"> File Uploads <br>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Submission Attempts</td>
+        <td align="left">
+            <b>Allowed Attemptss</b><br>
+            <select>
+                <option>Unlimited</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Plagiarism Review</td>
+        <td align="left">
+            <select>
+                <option>None</option>
+            </select>
+            <hr>
+            Show report to Students <br>
+            <select>
+                <option>Immediately</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Group Assignment</td>
+        <td align="left">
+            <input type="checkbox"> This is a group assignment
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Peer Reviews</td>
+        <td align="left">
+            <input type="checkbox"> Require Peer Reviews
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Assign</td>
+        <td align="left">
+            <b>Assign to</b><br>
+            <input type="text" value="Everyone"><br>
+            <b>Due</b><br>
+            <input type="date" value="2023-09-13"><br>
+            <b>Available from</b><br>
+            <input type="date" value="2023-09-13"><br>
+            <b>Until</b><br>
+            <input type="date" value="2023-09-13">
+        </td>
+    </tr>
+</table>
+
+<button onclick="window.location.href = '/Kanbas/Courses/Assignments/screen.html';">Cancel</button>
+<button onclick="window.location.href = '/Kanbas/Courses/Assignments/screen.html';">Save</button>

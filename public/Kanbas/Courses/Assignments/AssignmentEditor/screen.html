@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment Editor</title>
+    </head>
+    <body>
+        <table border="0" width="100%">
+            <tbody>
+                <td valign="top">
+                    <ul>
+                        <li><a href="/Kanbas/Account/Profile/screen.html">Account</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="/Kanbas/Courses/Home/screen.html">Courses</a></li>
+                        <li><a href="#">Calendar</a></li>
+                        <li><a href="#">Inbox</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Studio</a></li>
+                        <li><a href="#">Commons</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </td>
+                <td valign="top">
+                    <ul>
+                        <li><a href="/Kanbas/Courses/Home/screen.html">Home</a></li>
+                        <li><a href="/Kanbas/Courses/Modules/screen.html">Modules</a></li>
+                        <li><a href="#">Piazza</a></li>
+                        <li><a href="#">Zoom Meetings</a></li>
+                        <li><a href="/Kanbas/Courses/Assignments/screen.html">Assignment</a></li>
+                        <li><a href="#">Quizzes</a></li>
+                        <li><a href="/Kanbas/Courses/Grades/screen.html">Grades</a></li>
+                        <li><a href="#">People</a></li>
+                        <li><a href="#">Panopto Video</a></li>
+                        <li><a href="#">Discussions</a></li>
+                        <li><a href="#">Announcements</a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li><a href="#">Files</a></li>
+                        <li><a href="#">Rubrics</a></li>
+                        <li><a href="#">Outcomes</a></li>
+                        <li><a href="#">Collaborations</a></li>
+                        <li><a href="#">Syllabus</a></li>
+                        <li><a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">Settings</a></li>
+                    </ul>
+                </td>
+                <td valign="top">
+                    <select>
+                        <option>SpeedGrader</option>
+                    </select>
+                    <hr>
+                    
+                    <label for="assignmentName">
+                        <h3>Assignment Name</h3>
+                    </label>
+                    <p>
+                        <input id="assignmentName" type="text" value="A1 - ENV + HTML">
+                    </p>
+                    <p>
+                    <textarea cols="50" rows="10">
+                    This assignment describes how to install the development environment for creating and working with Web applications we will be developing this semester. We will add new content every week, pushing the code to a GitHub source repository, and then deploying the content to a remote server hosted on Netlify.
+                    </textarea>
+                    </p>
+                    
+                    <table border="0">
+                        <tr>
+                            <td align="right">Points</td>
+                            <td align="left"><input type="text" value="100"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Assignment Group</td>
+                            <td align="left">
+                                <select>
+                                    <option>ASSIGNMENTS</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">Display Grade as</td>
+                            <td align="left">
+                                <select>
+                                    <option>Percentage</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">Submission Type</td>
+                            <td align="left">
+                                <select>
+                                    <option>Online</option>
+                                </select><br>
+                                <b>Online Entry Options</b><br>
+                                <input type="checkbox" checked> Text Entry <br>
+                                <input type="checkbox"> Website URL <br>
+                                <input type="checkbox"> Media Recordings <br>
+                                <input type="checkbox"> Student Annotation <br>
+                                <input type="checkbox"> File Uploads <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">Submission Attempts</td>
+                            <td align="left">
+                                <b>Allowed Attemptss</b><br>
+                                <select>
+                                    <option>Unlimited</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">Plagiarism Review</td>
+                            <td align="left">
+                                <select>
+                                    <option>None</option>
+                                </select>
+                                <hr>
+                                Show report to Students <br>
+                                <select>
+                                    <option>Immediately</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">Group Assignment</td>
+                            <td align="left">
+                                <input type="checkbox"> This is a group assignment
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">Peer Reviews</td>
+                            <td align="left">
+                                <input type="checkbox"> Require Peer Reviews
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">Assign</td>
+                            <td align="left">
+                                <b>Assign to</b><br>
+                                <input type="text" value="Everyone"><br>
+                                <b>Due</b><br>
+                                <input type="date" value="2023-09-13"><br>
+                                <b>Available from</b><br>
+                                <input type="date" value="2023-09-13"><br>
+                                <b>Until</b><br>
+                                <input type="date" value="2023-09-13">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <button onclick="window.location.href = '/Kanbas/Courses/Assignments/screen.html';">Cancel</button>
+                    <button onclick="window.location.href = '/Kanbas/Courses/Assignments/screen.html';">Save</button>
+                </td>
+            </tbody>
+        </table>
+    </body>
+</html>
