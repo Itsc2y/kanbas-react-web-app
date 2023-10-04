@@ -3,89 +3,219 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Account Profile</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/Kanbas/KanbasNavigation/index.css">
+        <link rel="stylesheet" href="/Kanbas/Courses/CourseNavigation/index.css">
+        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
+        <title>Account Profile Edit</title>
     </head>
     <body>
-        <table border="0" width="100%">
-            <tr>
-                <td valign="top">
-                    <ul>
-                        <li><a href="/Kanbas/Account/Profile/screen.html">Account</a></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="/Kanbas/Courses/Home/screen.html">Courses</a></li>
-                        <li><a href="#">Calendar</a></li>
-                        <li><a href="#">Inbox</a></li>
-                        <li><a href="#">History</a></li>
-                        <li><a href="#">Studio</a></li>
-                        <li><a href="#">Commons</a></li>
-                        <li><a href="#">Help</a></li>
-                    </ul>
-                </td>
-                <td valign="top">
-                    <ul>
-                        <li><a href="#">Notifications</a></li>
-                        <li><a href="/Kanbas/Account/Profile/screen.html">Profile</a></li>
-                        <li><a href="#">Files</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">ePortfolios</a></li>
-                        <li><a href="#">Shared Content</a></li>
-                        <li><a href="#">The Hub</a></li>
-                        <li><a href="#">Qwickly Course Tools</a></li>
-                        <li><a href="#">Global Announcements</a></li>
-                    </ul>
-                </td>
-                <td valign="top">
-                    <form action="/Kanbas/Account/Profile/screen.html">
-                        <table >
-                            <tr>
-                                Monica Chen's Profile
-                                <hr>
-                            </tr>
-                            <td valign="top">
-                                Name:* <br>
-                                <input name="fullName" type="text" value="Monica Chen"><br>
-                        
-                                Pronouns: <br>
-                                <select>
-                                    <option>None</option>
-                                </select> <br>
-                                
-                                Title: <br>
-                                <input type="text"><br>
+        <div class="d-block d-md-none wd-fixed-top-margin">
+            <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" style="background-color: black !important;">
+                <div class="container-fluid">
+                    <div class="dropdown">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+
+                        <ul id="dropdown-kanbas" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Kanbas/Dashboard/screen.html">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/Kanbas/Account/Profile/screen.html">
+                                <i id="account" class="fa fa-user-circle-o" aria-hidden="true" style="color: gray !important;"></i> Account</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/Kanbas/Courses/Home/screen.html">
+                                <i class="fa fa-book" aria-hidden="true"></i> Courses</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> Calendar</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-inbox" aria-hidden="true"></i> Inbox</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-television" aria-hidden="true"></i> Studio</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i> Commons</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-history" aria-hidden="true"></i> History</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a class="navbar-brand text-center" href="#"><span class="wd-fg-color-white">Monica's Profile</span></a>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+               
+                        <ul id="dropdown-kanbas" class="dropdown-menu w-100 dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-bullhorn" aria-hidden="true"></i> Notifications</a></li>
+                            <li><a class="dropdown-item" href="/Kanbas/Account/Profile/screen.html">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i> Files</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-circle-thin" aria-hidden="true"></i> ePortfolios</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-plug" aria-hidden="true"></i> The Hub</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-plug" aria-hidden="true"></i> Qwickly Course Tools</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fa fa-circle-thin" aria-hidden="true"></i> Global Announcements</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </div> 
+        <div class="wd-flex-row-container">
+            <div class="wd-bg-color-black d-none d-md-block">
+                <ul class="wd-kanbas-navigation">
+                    <li>
+                        <img id="nu-logo" src="/images/NU_logo.png">
+                    </li>
+                    <li class="wd-active"><a href="/Kanbas/Account/Profile/screen.html">
+                        <i id="account" class="fa fa-user-circle-o" aria-hidden="true"></i>Account</a>
+                    </li>
+                    <li><a href="/Kanbas/Dashboard/screen.html">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                    <li><a href="/Kanbas/Courses/Home/screen.html">
+                        <i class="fa fa-book" aria-hidden="true"></i>Courses</a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>Calendar</a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-inbox" aria-hidden="true"></i><br>Inbox</a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-history" aria-hidden="true"></i><br>History</a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-television" aria-hidden="true"></i>Studio</a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>Commons</a>
+                    </li>
+                    <li><a href="#">
+                        <i class="fa fa-question-circle" aria-hidden="true"></i><br>Help</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-fluid wd-relative-left">
+                <div class="d-md-block d-none mt-4 ms-3">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-bars fa-lg wd-fg-color-red me-4" aria-hidden="true"></i> Monica's Profile</li>
+                        </ol>
+                    </nav>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col col-md-auto d-none d-md-block">
+                        <ul class="wd-course-navigation">
+                            <li><a href="#">Notifications</a></li>
+                            <li class="wd-active"><a href="/Kanbas/Account/Profile/screen.html">Profile</a></li>
+                            <li><a href="#">Files</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">ePortfolios</a></li>
+                            <li><a href="#">Shared Content</a></li>
+                            <li><a href="#">The Hub</a></li>
+                            <li><a href="#">Qwickly Course Tools</a></li>
+                            <li><a href="#">Global Announcements</a></li>
+                        </ul>
+                    </div>
+                    <div class="col col-md-9 wd-flex-grow-1">
+                        <form action="/Kanbas/Account/Profile/screen.html">
+                            <div class="float-end">
+                                <button class="btn btn-light">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Cancel Editing
+                                </button>
+                            </div> 
+                            <div>
+                                <i id="account" class="fa fa-user-circle-o fa-5x mb-3" aria-hidden="true"></i>
+                                    
+                                <div class="mb-3">
+                                    <label for="accountNameEdit" class="form-label">Name:*</label>
+                                    <input type="text" class="form-control" id="accountNameEdit" value="Monica Chen">
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="accountPronounsEdit" class="form-label">Pronouns:</label>
+                                    <br>
+                                    <select id="accountPronounsEdit">
+                                        <option>None</option>
+                                    </select>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="accountTitleEdit" class="form-label">Title:</label>
+                                    <input type="text" class="form-control" id="accountTitleEdit">
+                                </div>
                         
                                 <h3>Contact</h3>
-                                <p>No registered services, you can add some on the <a href="#" style="text-decoration: none;">settings</a> page.</p>
+                                <p>No registered services, you can add some on the <a class="wd-fg-color-red" href="#">settings</a> page.</p>
                         
-                                <h3>Biography</h3>
-                                <textarea name="biography" cols="50" rows="10">Master of Science in Computer Science student of NEU Khnory College.</textarea>
+                                <div class="mb-3 d-block">
+                                    <label for="accountBiographyEdit" class="form-label"><h3>Biography</h3></label>
+                                    <textarea class="form-control" id="accountBiographyEdit" rows="10">Master of Science in Computer Science student of NEU Khnory College.</textarea>
+                                </div>
                         
                                 <h3>Links</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>URL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th><input type="text" value="LinkedIn"> → </th>
-                                            <th><input type="text" value="https://www.linkedin.com/in/yangyang-chen-5b1ab7249/"> <a href="#">Remove</a></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button>Add another link</button>
+                                <div class="row">
+                                    <div class="col col-2 text-center">
+                                        Title
+                                    </div>
+                                    <div class="col col-2 text-center ms-5">
+                                        URL
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-2 me-4">
+                                        <input type="text" value="YouTube">
+                                    </div>
+                                    →
+                                    <div class="col col-2">
+                                        <input type="text" value="https://www.youtube.com/watch?v=9XsRrm-VKj4">
+                                    </div>
+                                    <div class="col col-1">
+                                        <i class="fa fa-times wd-fg-color-red ms-3" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+        
+                                <button class="btn btn-light mt-3">Add another link</button>
                                 <hr>
-                                <button>Cancel</button>
-                                <button>Save Profile</button>
-                            </td>
-                            <td valign="top">
-                                <button>✎ Cancel Editing</button>
-                            </td>
-                        </table>          
-                    </form>                    
-                </td>
-            </tr>
-        </table>
+                                <button class="btn btn-light">Cancel</button>
+                                <button class="btn btn-danger">Save Profile</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>    
+        </div>
     </body>
 </html>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+  integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="/lib/bootstrap/bootstrap.min.js"></script>
