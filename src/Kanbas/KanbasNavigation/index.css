@@ -1,0 +1,50 @@
+body {
+ padding: 0;
+ margin: 0;
+}
+
+.wd-kanbas-navigation {
+  background-color: black;
+  list-style: none;
+  width: 87px;
+  position: fixed;
+  height: 100%;
+}
+
+.wd-kanbas-navigation .list-group-item {
+  color: white; 
+  font-size: 0.8em;
+  text-align: center;
+  padding: 12px;
+}
+
+.wd-kanbas-navigation .list-group-item.active {
+  background-color: white;
+  color: rgb(181, 40, 40);
+}
+
+.wd-kanbas-navigation a i{
+  margin-bottom: 5px;
+  color: rgb(181, 40, 40);
+  font-size: 2em;
+}
+
+#account {
+  color: gray;
+}
+
+#nu-logo {
+  padding-left: 13px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 73px;
+}
+
+#dropdown-kanbas li a{
+  color: rgb(181, 40, 40);
+}
+
+#dropdown-kanbas li i{
+  color: rgb(181, 40, 40);
+}
+
