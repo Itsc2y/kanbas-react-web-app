@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import db from "../../Kanbas/Database";
 import CourseNavigation from "./CourseNavigation";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -10,12 +9,16 @@ import Grades from "./Grades";
 import "../styles.css";
 import "../../lib/font-awesome/css/font-awesome.css";
 import "../../lib/bootstrap/bootstrap.min.css";
+import { useSelector } from "react-redux"; 
 
 function Courses() {
   const { courseId } = useParams();
-  const {pathname} = useLocation();
-  const [empty, kanbas, courses, id, screen] = pathname.split("/");
-  const course = db.courses.find((course) => course._id === courseId);
+  const { pathname } = useLocation();
+  const parts = pathname.split('/');
+  const screen = parts[parts.length - 1];
+  const courses = useSelector((state) => state.CourseReducer.courses);
+  const course = courses.find((course) => course._id === courseId);
+
   return (
     <div className="container-fluid">
       <div className="d-md-block d-none">

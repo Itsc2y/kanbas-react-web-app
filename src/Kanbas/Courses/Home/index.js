@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import ModuleList from "../Modules/ModuleList";
+import ModuleList from "../../Redux/modules/ModuleList";
 import "../../styles.css";
 import "../../../lib/font-awesome/css/font-awesome.css";
 import "../../../lib/bootstrap/bootstrap.min.css";
+import ModuleHeader from "../../Redux/modules/ModuleHeader";
+import ModuleItem from "../../Redux/modules/ModuleItem";
 
 
 function Home() {
@@ -43,7 +44,9 @@ function Home() {
   return (
     <div className="row">
       <div className="col col-md-9 wd-flex-grow-1">
-        <ModuleList />
+        <ModuleHeader />
+        <hr />
+        <ModuleItem />
       </div>
 
       <div className="col col-md-auto d-sm-none d-md-none d-lg-block">

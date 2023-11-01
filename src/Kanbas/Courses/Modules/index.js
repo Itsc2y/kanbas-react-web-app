@@ -1,4 +1,4 @@
-import ModuleList from "./ModuleList";
+import ModuleList from "../../Redux/modules/ModuleList";
 function Modules() {
   return (
     <div>
