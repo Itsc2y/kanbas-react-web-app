@@ -1,27 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
-import { setAssignment, deleteAssignment } from "./AssignmentReducer";
+import { setAssignment, setAssignments, deleteAssignment as deleteAssignmentAction } from "./AssignmentReducer";
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import the CSS
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
+
+import * as client from "./client";
 
 function AssignmentList() {
     const { courseId } = useParams();
-    const assignments = useSelector((state) => state.AssignmentReducer.assignments);
-    const courseAssignments = assignments.filter(
-        (assignment) => assignment.course === courseId);
+    const assignments = useSelector(state => state.AssignmentReducer.assignments);
     const dispatch = useDispatch();
 
-    const handleDelete = (assignmentId) => {
+    const handleDelete = async (assignmentId) => {
         confirmAlert({
           title: 'Confirm Deletion',
           message: 'Are you sure you want to delete this assignment?',
           buttons: [
             {
               label: 'Yes',
-              onClick: () => {
-                dispatch(deleteAssignment(assignmentId));
+              onClick: async () => {
+                await client.deleteAssignment(assignmentId); 
+                dispatch(deleteAssignmentAction(assignmentId));
               },
             },
             {
@@ -32,6 +32,20 @@ function AssignmentList() {
         });
     };
 
+    const fetchAssignments = async () => {
+        try {
+            const assignments = await client.findAssignmentsForCourse(courseId);
+            dispatch(setAssignments(assignments));
+        } catch (error) {
+            console.error("Failed to fetch assignments:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAssignments();
+    }, [courseId]);
+
+    console.log("Assignments JSON:", JSON.stringify(assignments, null, 2));
     return (
         <div>
             <div className="d-flex justify-content-end gap-1 mb-2">
@@ -67,7 +81,7 @@ function AssignmentList() {
                         ></i>{" "}
                         Assignments
                     </li>
-                    {courseAssignments.map((assignment) => (
+                    {assignments.map((assignment) => (
                         <li key={assignment._id} className="list-group-item" style={{ borderLeft: "5px solid green" }}>
                             <div className="row">
                                 <div className="col col-1 mt-2" >

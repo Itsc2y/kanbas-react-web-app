@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import db from "../../Database";
 
 const initialState = {
-  courses: db.courses,
+  courses: [],
   course: {
-    _id: "",
+    // _id: "",
     name: "",
     number: "",
     startDate: "",
@@ -16,37 +15,32 @@ const coursesSlice = createSlice({
   name: "courses",
   initialState,
   reducers: {
-    addCourse: (state, action) => { 
-      const newCourse = { ...action.payload };
-      state.courses.push(newCourse);
-      state.course = {
-        _id: "",
-        name: "",
-        number: "",
-        startDate: "",
-        endDate: "",
-      };
+    setCourses: (state, action) => {
+      state.courses = action.payload;
     },
+
+    addCourse: (state, action) => { 
+      state.courses = [action.payload, ...state.courses];
+    },
+
     deleteCourse: (state, action) => {
       state.courses = state.courses.filter((course) => course._id !== action.payload);
     },
+
     updateCourse: (state, action) => {
-      const index = state.courses.findIndex((course) => course._id === action.payload._id);
-      if (index !== -1) {
-        state.courses[index] = action.payload;
-        state.course = {
-          _id: "",
-          name: "",
-          number: "",
-          startDate: "",
-          endDate: "",
-        };
-      }
+      state.courses = state.courses.map((course) => {
+        if (course._id === action.payload._id) {
+            return action.payload;
+        }
+        return course;
+      });
     },
+
     setCourse: (state, action) => {
       state.course = { ...action.payload };
     },
   },
 });
-export const { addCourse, deleteCourse, updateCourse, setCourse } = coursesSlice.actions;
+
+export const { addCourse, deleteCourse, updateCourse, setCourse, setCourses } = coursesSlice.actions;
 export default coursesSlice.reducer;

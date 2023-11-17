@@ -7,8 +7,10 @@ import "./styles.css";
 import "../lib/font-awesome/css/font-awesome.css";
 import "../lib/bootstrap/bootstrap.min.css";
 
+import React, { useState, useEffect } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
+import axios from "axios";
 
 function Kanbas() {
   return (

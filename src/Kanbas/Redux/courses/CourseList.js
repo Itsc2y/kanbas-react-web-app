@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CourseForm from "./CourseForm";
 import CourseItem from "./CourseItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setCourses } from "./CourseReducer";
+import * as client from "./client";
+
 
 function CourseList() {
-  const { courses } = useSelector((state) => state.CourseReducer);
+  const courses = useSelector(state => state.CourseReducer.courses);
+  const dispatch = useDispatch();
+
+  const fetchCourses = async () => {
+    try {
+        const courses = await client.findCourses();
+        dispatch(setCourses(courses));
+    } catch (error) {
+        console.error("Failed to fetch courses:", error);
+    }
+  };
+
+  useEffect(() => {
+      fetchCourses();
+  }, []);
+
   return (
     <div>
       <h2>Published Courses ({courses.length})</h2>

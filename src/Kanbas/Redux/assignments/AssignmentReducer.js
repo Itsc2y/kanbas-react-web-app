@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import db from "../../Database";
-import { useLocation } from "react-router-dom";
 
 const initialState = {
-  assignments: db.assignments,
+  assignments: [],
   assignment: {
-    _id: "",
-    name: "",
+    name: "New Assignment",
     points: "",
     dueDate: "",
-    description: "",
+    description: "New Description",
     course: ""
   },
 };
@@ -18,44 +15,31 @@ const assignmentSlice = createSlice({
   name: "assignments",
   initialState,
   reducers: {
-    addAssignment: (state, action) => {
-        const { courseId } = action.payload;
-        console.log(courseId);
-        const newAssignment = { ...action.payload, course: courseId };
-        state.assignments.push(newAssignment);
-        state.assignment = {
-            name: "",
-            points: "",
-            dueDate: "",
-            description: "",
-            course:courseId
-        };
+    addModule: (state, action) => {
+      state.assignments = [action.payload, ...state.assignments];
     },
+
     deleteAssignment: (state, action) => {
       state.assignments = state.assignments.filter(
         (assignment) => assignment._id !== action.payload
       );
     },
+
     updateAssignment: (state, action) => {
-      const index = state.assignments.findIndex(
-        (assignment) => assignment._id === action.payload._id
-      );
-      if (index !== -1) {
-        state.assignments[index].name = action.payload.name;
-        state.assignments[index].points = action.payload.points;
-        state.assignments[index].dueDate = action.payload.dueDate;
-        state.assignments[index].description = action.payload.description;
-        // state.assignments[index] = action.payload;
-        // state.assignment = {
-        //     name: "",
-        //     points: "",
-        //     dueDate: "",
-        //     description: ""
-        // };
-      }
+      state.assignments = state.assignments.map((assignment) => {
+        if (assignment._id === action.payload._id) {
+            return action.payload;
+        }
+        return assignment;
+      });
     },
+
     setAssignment: (state, action) => {
-      state.assignment = { ...action.payload };
+      state.assignment = action.payload; 
+    },
+
+    setAssignments: (state, action) => {
+      state.assignments = action.payload; 
     },
   },
 });
@@ -65,6 +49,7 @@ export const {
   deleteAssignment,
   updateAssignment,
   setAssignment,
+  setAssignments
 } = assignmentSlice.actions;
 
 export default assignmentSlice.reducer;

@@ -1,12 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import * as client from "./client";
 import { useSelector, useDispatch } from "react-redux";
-import { updateAssignment, setAssignment, addAssignment } from "./AssignmentReducer";
+import { updateAssignment as updateAssignmentAction, setAssignments, addAssignment as addAssignmentAction } from "./AssignmentReducer";
 import { Link, useParams } from "react-router-dom";
 
 function AssignmentForm() {
   const { courseId } = useParams();
-  const assignment = useSelector((state) => state.AssignmentReducer.assignment);
+  const selectedAssignment = useSelector(state => state.AssignmentReducer.assignment); 
+  const [assignment, setAssignment] = useState({ 
+    name: "",
+    points: "",
+    dueDate: "",
+    description: "",
+    course: "" 
+  });
   const dispatch = useDispatch();
+
+  const addAssignmentHandler = async () => {
+    try {
+        const newAssignment = await client.addAssignment(courseId, assignment);
+        dispatch(addAssignmentAction(newAssignment)); 
+    } catch (error) {
+        console.error("Failed to add assignment:", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+      setAssignment({ ...assignment, [e.target.name]: e.target.value });
+  };
+
+  const updateAssignmentHandler = async () => {
+      try {
+          const updatedAssignment = await client.updateAssignment(assignment._id, assignment);
+          dispatch(updateAssignmentAction(updatedAssignment));
+          fetchAssignments(); 
+      } catch (error) {
+          console.error("Failed to update assignment:", error);
+      }
+  };
+
+  const fetchAssignments = async () => {
+    try {
+        const assignments = await client.findAssignmentsForCourse(courseId);
+        dispatch(setAssignments(assignments));
+    } catch (error) {
+        console.error("Failed to fetch assignments:", error);
+    }
+  };
+
+  useEffect(() => {
+      fetchAssignments();
+  }, [courseId]);
+
+  useEffect(() => {
+      if (selectedAssignment) {
+          setAssignment(selectedAssignment); 
+      }
+  }, [selectedAssignment]);
+
+
   return (
     <div>
       <div className="d-flex justify-content-end gap-1">
@@ -22,32 +74,36 @@ function AssignmentForm() {
         <li className="list-group-item form-control">
           <p>
             Assignment Name <input
+            name="name"
             className="form-control"
             placeholder="New Assignment"
             value={assignment.name}
-            onChange={(e) => dispatch(setAssignment({ ...assignment, name: e.target.value }))}
+            onChange={handleInputChange}
             />
           </p>
             <textarea 
-                className="form-control"
-                placeholder="New Assignment Description"
-                value={assignment.description}
-                onChange={(e) => dispatch(setAssignment({ ...assignment, description: e.target.value }))
-            }/>
+              name="description"
+              className="form-control"
+              placeholder="New Assignment Description"
+              value={assignment.description}
+              onChange={handleInputChange}
+            />
           Points <input
+            name="points"
             className="form-control"
             value={assignment.points}
-            onChange={(e) => dispatch(setAssignment({ ...assignment, points: e.target.value }))}
+            onChange={handleInputChange}
             />
 
           Assign <ul className="list-group mb-3">
             <li className="list-group-item form-control">
               <p>
                 Due <input
+                name="dueDate"
                 type="date"
                 className="form-control"
                 value={assignment.dueDate}
-                onChange={(e) => dispatch(setAssignment({ ...assignment, dueDate: e.target.value }))}
+                onChange={handleInputChange}
                 />
               </p>
               <p>
@@ -72,10 +128,10 @@ function AssignmentForm() {
               <button className="btn btn-outline-dark rounded-0 me-2">
                 Cancel
               </button>
-              <button className="btn btn-primary rounded-0 me-2" onClick={() => dispatch(updateAssignment(assignment))}>
+              <button className="btn btn-primary rounded-0 me-2" onClick={updateAssignmentHandler}>
                 Save
               </button>
-              <button className="btn btn-danger rounded-0" onClick={() => dispatch(addAssignment(assignment))}>
+              <button className="btn btn-danger rounded-0" onClick={addAssignmentHandler}>
                 Add
               </button>
             </Link>

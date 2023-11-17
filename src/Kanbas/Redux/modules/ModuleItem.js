@@ -1,24 +1,44 @@
+import React, { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  deleteModule,
-  setModule,
-} from "./ModuleReducer";
+import { useSelector, useDispatch } from 'react-redux';
+import { setModule, setModules, deleteModule as deleteModuleAction } from "./ModuleReducer";
 
-function ModuleItem () {
+import * as client from "./client";
+
+function ModuleItem() {
     const { pathname } = useLocation();
     const parts = pathname.split('/');
     const screen = parts[parts.length - 1];
+
     const { courseId } = useParams();
-    const modules = useSelector((state) => state.ModuleReducer.modules);
+    const modules = useSelector(state => state.ModuleReducer.modules);
     const dispatch = useDispatch();
+
+    const deleteModuleHandler = async (moduleId) => {
+        try {
+            await client.deleteModule(moduleId);
+            dispatch(deleteModuleAction(moduleId)); 
+        } catch (error) {
+            console.error("Failed to delete module:", error);
+        }
+    };
+
+    const fetchModules = async () => {
+        try {
+            const modules = await client.findModulesForCourse(courseId);
+            dispatch(setModules(modules));
+        } catch (error) {
+            console.error("Failed to fetch modules:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchModules();
+    }, [courseId]);
     
     return (
         <div>
-            {
-            modules
-            .filter((module) => module.course === courseId)
-            .map((module, index) => (
+            {modules.map((module, index) => (
                 <ul className="list-group mb-5 rounded-0">
                 <li key={index} className="list-group-item list-group-item-secondary">
                     {screen === "Home" ? (
@@ -33,7 +53,7 @@ function ModuleItem () {
                     <button className="float-end btn btn-outline-warning me-2 rounded-0" onClick={() => dispatch(setModule(module))}>
                     Edit
                     </button>
-                    <button className="float-end btn btn-outline-danger me-2 rounded-0" onClick={() => dispatch(deleteModule(module._id))}>
+                    <button className="float-end btn btn-outline-danger me-2 rounded-0" onClick={() => deleteModuleHandler(module._id)}>
                     Delete
                     </button>
                     <div className="mt-2">
@@ -43,8 +63,7 @@ function ModuleItem () {
                     </>
                 )}
                 </li>
-                    {
-                    module.lessons.map((lesson, index) => (
+                    {module.lessons.map((lesson, index) => (
                         <li key={index} className="list-group-item">
                         <i className="fa fa-ellipsis-v float-end me-4"></i>
                         <i className="fa fa-check-circle float-end me-3" style={{ color: 'green' }}></i>
